@@ -1,0 +1,47 @@
+pragma solidity ^0.8.0;
+
+contract BasicToken {
+    string public name;
+    string public symbol;
+    uint256 public totalSupply;
+    mapping(address => uint256) balances;
+
+    constructor(string memory _name, string memory _symbol, uint256 _totalSupply) {
+        name = _name;
+        symbol = _symbol;
+        totalSupply = _totalSupply;
+        balances[msg.sender] = _totalSupply;
+    }
+
+    function balanceOf(address _owner) public view returns (uint256) {
+        return balances[_owner];
+    }
+
+    function transfer(address _to, uint256 _value) public returns (bool) {
+        require(balances[msg.sender] >= _value, "Insufficient balance");
+        require(_to != address(0), "Invalid address");
+
+        balances[msg.sender] -= _value;
+        balances[_to] += _value;
+
+        emit Transfer(msg.sender, _to, _value);
+        return true;
+    }
+
+    event Transfer(address indexed _from, address indexed _to, uint256 _value);
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+This smart contract defines a basic token with a name, symbol, and total supply. It maintains a mapping of balances for each address. The balances mapping stores the token balance for each address.
+
+The constructor is called when the contract is deployed and initializes the token's name, symbol, and total supply. The total supply is assigned to the deployer's address.
+
+The balanceOf function allows anyone to check the token balance of a specific address.
+
+The transfer function is used to transfer tokens from the sender's address to a specified address. It checks if the sender has enough tokens, verifies the recipient's address, updates the balances accordingly, and emits a Transfer event.
+
+The Transfer event is emitted whenever a transfer occurs, providing the sender, recipient, and the number of tokens transferred.
+
+Please note that this is a simplified example for educational purposes. In a real-world scenario, you would want to add additional functionality and security measures, such as access control and safeguards against common attacks.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
