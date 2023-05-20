@@ -1,3 +1,17 @@
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+This smart contract defines a basic token with a name, symbol, and total supply. It maintains a mapping of balances for each address. The balances mapping stores the token balance for each address.
+
+The constructor is called when the contract is deployed and initializes the token's name, symbol, and total supply. The total supply is assigned to the deployer's address.
+
+The balanceOf function allows anyone to check the token balance of a specific address.
+
+The transfer function is used to transfer tokens from the sender's address to a specified address. It checks if the sender has enough tokens, verifies the recipient's address, updates the balances accordingly, and emits a Transfer event.
+
+The Transfer event is emitted whenever a transfer occurs, providing the sender, recipient, and the number of tokens transferred.
+
+Please note that this is a simplified example for educational purposes. In a real-world scenario, you would want to add additional functionality and security measures, such as access control and safeguards against common attacks.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 pragma solidity ^0.8.0;
 
 contract BasicToken {
@@ -32,16 +46,3 @@ contract BasicToken {
 }
 
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-This smart contract defines a basic token with a name, symbol, and total supply. It maintains a mapping of balances for each address. The balances mapping stores the token balance for each address.
-
-The constructor is called when the contract is deployed and initializes the token's name, symbol, and total supply. The total supply is assigned to the deployer's address.
-
-The balanceOf function allows anyone to check the token balance of a specific address.
-
-The transfer function is used to transfer tokens from the sender's address to a specified address. It checks if the sender has enough tokens, verifies the recipient's address, updates the balances accordingly, and emits a Transfer event.
-
-The Transfer event is emitted whenever a transfer occurs, providing the sender, recipient, and the number of tokens transferred.
-
-Please note that this is a simplified example for educational purposes. In a real-world scenario, you would want to add additional functionality and security measures, such as access control and safeguards against common attacks.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
